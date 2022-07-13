@@ -1,31 +1,51 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-// data.data.map((dat)=> <li key={dat.anime_id}>{dat.anime_name}</li>)
 export default function Anime () {
-    // const API_URL = "https://anime-facts-rest-api.herokuapp.com/api/v1"
-    const API_URL = 'https://restcountries.eu/rest/v2/all'
-    const [data, setData] = useState({})
+    const [data, setData] = useState([])
+    const [displayData, setDisplayData] = useState(false)
+    const API_URL =  "https://anime-facts-rest-api.herokuapp.com/api/v1"
 
-    
-    const getAnime =(url=API_URL)=> {
-        axios.get(url).then((response)=> {
-            HTMLFormControlsCollection.log(response.data)
-            setData(response.data)
-        }).catch((error)=> {
-            console.log(error)
-        })
+    useEffect(()=> {
+        axios.get(API_URL).then((response)=> {
+            setData(response.data.data)
+            console.log(response.data.data)
+        }).catch((err)=> console.log(err))
+    }, [])
+
+
+    const handleClick = () => {
+        if( displayData) {
+            setDisplayData(false)
+        }else{
+            setDisplayData(true)
+        }
     }
 
-    // const renderCountry = data.map((country) => {
+    const renderImage = data.map((dat)=> {
+        return (
+            <>
+                <h2 key={dat.anime_name}>{dat.anime_name}</h2>
+                <img src={dat.anime_img} alt={dat.anime_name} key={dat.anime_id}/>
+            </>
+        )
+    })
 
-    // })
+    const renderNothing = <h2>Nothing to Show at the moment..</h2>
+    const heading = <h1 style={{"textAlign" : "center"}}>Welcome To The Best Anime Site</h1>
+    
+
+
+
+
 
     return(
         <>
-            <button onClick={getAnime}>Click Me</button>
-            {data}
-            {/* {data == null ? <h3>Nothing to render..</h3>: ani } */}
+            {heading}
+            {displayData? renderImage : renderNothing }<br/>
+            <button onClick={handleClick}>Random Anime</button>
         </>
     )
+ 
+
 }
