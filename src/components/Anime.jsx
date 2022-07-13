@@ -4,6 +4,7 @@ import axios from 'axios'
 export default function Anime () {
     const [data, setData] = useState([])
     const [displayData, setDisplayData] = useState(false)
+    
     const API_URL =  "https://anime-facts-rest-api.herokuapp.com/api/v1"
 
     useEffect(()=> {
