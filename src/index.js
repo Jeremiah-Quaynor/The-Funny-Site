@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Anime from './components/Anime';
+import Icons from './components/Icons';
 // import DataFetching from './components/DataFetching';
 import './index.css';
 // import App from './App';
@@ -10,7 +10,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Anime />
+    <Icons />
   </React.StrictMode>
 );
 
