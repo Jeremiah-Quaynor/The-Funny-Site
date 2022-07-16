@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState} from 'react'
+import Card from '../Card/Card';
 // import Card from '../Card/Card';
 import "./Home.css"
 
@@ -37,6 +38,7 @@ function Home() {
     <div>
       <h1>{data.word}</h1>
       <h3>{data.phonetic}</h3>
+      {/* <p>{data.meanings[0].definitions.definition}</p> */}
     </div>
   )
 
@@ -52,7 +54,9 @@ function Home() {
         {!isPending && <button type="submit"  value="Search">Search</button>}
         {isPending && <button type="submit"  value="Searching" disabled>Searching...</button>}
         </form>
-        {isPending ? loading : displayWord}
+        <Card>
+          {isPending ? loading : displayWord}
+        </Card>
       </>
     );
   }

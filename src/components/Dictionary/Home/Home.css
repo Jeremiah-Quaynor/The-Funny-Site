@@ -18,7 +18,7 @@ img{
 }
 
 button{
-    background-color: #04AA6D;
+    background-color: #0b1058;
     border: none;
     color: white;
     padding: 16px 32px;
@@ -28,6 +28,6 @@ button{
     border-radius: 10px;
 }
 button:hover{
-    background-color: #04aa6d9a;
+    background-color: #0b1058d5;
 
 }
